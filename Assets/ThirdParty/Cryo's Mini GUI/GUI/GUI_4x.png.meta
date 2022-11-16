@@ -2964,7 +2964,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_143
+      name: vit
       rect:
         serializedVersion: 2
         x: 256
@@ -3006,7 +3006,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_145
+      name: str
       rect:
         serializedVersion: 2
         x: 320
@@ -3027,7 +3027,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_146
+      name: spd
       rect:
         serializedVersion: 2
         x: 352
@@ -4256,6 +4256,7 @@ TextureImporter:
       GUI_4x_115: 1311139972
       GUI_4x_175: 226030847
       GUI_4x_82: -961461639
+      spd: -2044726685
       GUI_4x_103: -995042179
       GUI_4x_94: -1857038979
       GUI_4x_106: -1882138646
@@ -4263,7 +4264,6 @@ TextureImporter:
       GUI_4x_20: -124849438
       GUI_4x_41: 1927829013
       GUI_4x_21: -642565496
-      GUI_4x_145: -957555811
       GUI_4x_129: -539645331
       GUI_4x_162: 2016397012
       GUI_4x_180: 980024044
@@ -4278,6 +4278,7 @@ TextureImporter:
       GUI_4x_10: 288177064
       GUI_4x_124: -97286356
       GUI_4x_8: 88377783
+      str: -957555811
       GUI_4x_30: -1491438381
       GUI_4x_186: -1805073033
       GUI_4x_78: 579146529
@@ -4286,7 +4287,6 @@ TextureImporter:
       GUI_4x_165: 164430828
       GUI_4x_83: -554471771
       GUI_4x_172: 1139200593
-      GUI_4x_143: -1441024437
       GUI_4x_159: -839379604
       GUI_4x_188: 2091124854
       GUI_4x_195: 126849088
@@ -4401,6 +4401,7 @@ TextureImporter:
       GUI_4x_59: 1222318087
       GUI_4x_50: 1288652390
       GUI_4x_60: 229296087
+      vit: -1441024437
       GUI_4x_22: 2071546450
       GUI_4x_126: -333337452
       GUI_4x_99: -1614911
@@ -4411,7 +4412,6 @@ TextureImporter:
       GUI_4x_48: 422999261
       GUI_4x_3: 824601941
       GUI_4x_131: 1431253340
-      GUI_4x_146: -2044726685
       GUI_4x_170: -82634274
       GUI_4x_177: -1129663263
       GUI_4x_57: -111120414
