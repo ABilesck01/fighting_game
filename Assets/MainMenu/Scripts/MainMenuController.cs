@@ -10,8 +10,6 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private string campaignScene;
     [SerializeField] private string versusScene;
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private GameObject settingsFirstSelected;
     [Space]
     [SerializeField] private Button btnCampaign;
     [SerializeField] private Button btnVersus;
@@ -22,28 +20,21 @@ public class MainMenuController : MonoBehaviour
     {
         btnCampaign.onClick.AddListener(OnCampaignClick);
         btnVersus.onClick.AddListener(OnVersusClick);
-        btnSettings.onClick.AddListener(OnSettingsClick);
         btnQuit.onClick.AddListener(OnQuitClick);
     }
 
     private void Start()
     {
-        if(CampaignController.Instance != null)
-        {
-            Destroy(CampaignController.Instance.gameObject);
-            CampaignController.Instance = null;
-        }
+        //if(CampaignController.Instance != null)
+        //{
+        //    Destroy(CampaignController.Instance.gameObject);
+        //    CampaignController.Instance = null;
+        //}
     }
 
     private void OnQuitClick()
     {
         Application.Quit();
-    }
-
-    private void OnSettingsClick()
-    {
-        EventSystem.current.SetSelectedGameObject(settingsFirstSelected);
-        settingsPanel.SetActive(true);
     }
 
     private void OnVersusClick()

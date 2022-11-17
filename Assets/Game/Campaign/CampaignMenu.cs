@@ -1,7 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CampaignMenu : MonoBehaviour
@@ -17,7 +17,6 @@ public class CampaignMenu : MonoBehaviour
     [Space]
     [SerializeField] private Button btnFight;
     [SerializeField] private Button btnStore;
-    [SerializeField] private Button btnGladiators;
     [SerializeField] private Button btnQuit;
 
     private void Awake()
@@ -26,7 +25,6 @@ public class CampaignMenu : MonoBehaviour
         btnStore.onClick.AddListener(OnStore);
         btnQuit.onClick.AddListener(OnQuit);
     }
-
 
     private void OnEnable()
     {
@@ -68,6 +66,7 @@ public class CampaignMenu : MonoBehaviour
 
     private void OnQuit()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        Loading.LoadScene("MainMenu");
     }
 }
