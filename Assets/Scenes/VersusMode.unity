@@ -1180,12 +1180,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5594990752457053279, guid: e78d047f9a8d39f49aa4b24d57928822, type: 3}
   m_PrefabInstance: {fileID: 966208494}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 966208499}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &966208499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5594990752457053273, guid: e78d047f9a8d39f49aa4b24d57928822, type: 3}
+  m_PrefabInstance: {fileID: 966208494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1079763858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1909647200}
   endPanel: {fileID: 966208497}
-  firstSelected: {fileID: 0}
+  firstSelected: {fileID: 966208499}
   txtEnd: {fileID: 966208496}
 --- !u!1 &1519951049
 GameObject:

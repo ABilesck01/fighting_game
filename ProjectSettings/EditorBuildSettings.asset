@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: dd9a1996de3d38247aecd54af816002c
+  - enabled: 1
+    path: Assets/Scenes/Bankrupt.unity
+    guid: 481ccc2a69170de4ea66f4a32147009d
   m_configObjects: {}

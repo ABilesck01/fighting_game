@@ -49,6 +49,13 @@ public class SinglePlayerHUD : MonoBehaviour
 
     public void BackToMenu()
     {
-        Loading.LoadScene("StoryMode");
+        if(!CampaignController.Instance.bankrupt)
+        {
+            Loading.LoadScene("StoryMode");
+        }
+        else
+        {
+            Loading.LoadScene("Bankrupt");
+        }
     }
 }

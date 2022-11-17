@@ -21,6 +21,8 @@ public class CampaignController : MonoBehaviour
     private GladiatorData enemyGladiatorToFight;
     private Dificulty currentDificulty;
 
+    public bool bankrupt = false;
+
     public List<GladiatorData> Gladiators { get => gladiators; set => gladiators = value; }
 
     public class onSpendMoney : EventArgs
@@ -157,6 +159,7 @@ public class CampaignController : MonoBehaviour
         if(Money <= 30 && gladiators.Count == 0)
         {
             Debug.Log("Bankrupt");
+            bankrupt = true;
         }
     }
 
