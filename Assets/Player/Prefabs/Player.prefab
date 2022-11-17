@@ -293,7 +293,7 @@ MonoBehaviour:
   - {fileID: 6229102794023749729}
   - {fileID: 6229102793325652078}
   gfx: {fileID: 6229102793167507544}
-  getValueFromController: 1
+  getValueFromController: 0
 --- !u!114 &7630523348707856224
 MonoBehaviour:
   m_ObjectHideFlags: 0

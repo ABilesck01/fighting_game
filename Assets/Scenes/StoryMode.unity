@@ -1892,6 +1892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnQuit
       objectReference: {fileID: 0}
+    - target: {fileID: 7178937658320860544, guid: 272328c5e346fb2438d5168ca1eae224, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7178937658320860550, guid: 272328c5e346fb2438d5168ca1eae224, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -2503,17 +2507,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7178937658320860551, guid: 272328c5e346fb2438d5168ca1eae224, type: 3}
   m_PrefabInstance: {fileID: 1304279956}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1304279958 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7178937658320860550, guid: 272328c5e346fb2438d5168ca1eae224, type: 3}
-  m_PrefabInstance: {fileID: 1304279956}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1308624076
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3572,6 @@ MonoBehaviour:
   storeController: {fileID: 2056253404}
   btnFight: {fileID: 6659579982419674379}
   btnStore: {fileID: 1648877494}
-  btnGladiators: {fileID: 1304279958}
   btnQuit: {fileID: 1105310624}
 --- !u!4 &1658328404
 Transform:
