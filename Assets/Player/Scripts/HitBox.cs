@@ -14,9 +14,20 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") && !collision.gameObject.Equals(this))
+        if(!collision.gameObject.Equals(this))
         {
-            collision.GetComponent<PlayerHealth>().TakeDamage(Damage);
+            if(collision.CompareTag("Player") || collision.CompareTag("Enemy"))
+            {
+                if(collision.TryGetComponent(out PlayerHealth health))
+                {
+                    health.TakeDamage(Damage);
+                }
+                else if (collision.TryGetComponent(out BotStats bot))
+                {
+                    bot.TakeDamage(Damage);
+                }
+                //collision.GetComponent<PlayerHealth>().TakeDamage(Damage);
+            }
         }
 
     }

@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float maxHealth;
     
     private float currentHealth;
-    private Healthbar healthbar;
+    [SerializeField] private Healthbar healthbar;
 
     public event EventHandler onTakeDamage;
     public class onDieEnventArgs : EventArgs
@@ -22,6 +22,14 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         playerData = GetComponent<PlayerData>();
+    }
+
+    private void Start()
+    {
+        if(healthbar != null)
+        {
+            healthbar.Initialize(maxHealth);
+        }
     }
 
     public void SetMaxHealth(int value)

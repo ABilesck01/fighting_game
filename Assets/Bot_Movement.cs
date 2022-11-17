@@ -9,7 +9,9 @@ public class Bot_Movement : StateMachineBehaviour
     private Transform player;
     private Rigidbody2D rb;
     [SerializeField] private float speed;
-    [SerializeField] private float AttackSpeed;
+    [SerializeField] private float MinAttackSpeed;
+    [SerializeField] private float MaxAttackSpeed;
+    
     private float nextTimeToAttack;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -27,7 +29,6 @@ public class Bot_Movement : StateMachineBehaviour
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         
         float distance = Vector2.Distance(player.position, rb.position);
-        Debug.Log(distance);
         if (distance <= AttackDistance)
         {
             if(nextTimeToAttack <= 0)
@@ -41,7 +42,7 @@ public class Bot_Movement : StateMachineBehaviour
                     animator.SetTrigger("kick");
                 }
 
-                nextTimeToAttack = AttackSpeed;
+                nextTimeToAttack = Random.Range(MinAttackSpeed, MaxAttackSpeed);
             }
             else
             {
@@ -61,7 +62,7 @@ public class Bot_Movement : StateMachineBehaviour
     {
         animator.ResetTrigger("punch");
         animator.ResetTrigger("kick");
-        nextTimeToAttack = AttackSpeed;
+        nextTimeToAttack = Random.Range(MinAttackSpeed, MaxAttackSpeed);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

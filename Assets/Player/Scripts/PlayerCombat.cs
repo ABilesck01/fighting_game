@@ -11,7 +11,10 @@ public class PlayerCombat : MonoBehaviour
     [Header("Kick")]
     [SerializeField] private string kickTrigger;
     [SerializeField] private InputActionReference kickAction;
+    [Space]
+    [SerializeField] private float attackTime;
 
+    private float nextAttackTime;
     private Animator animator;
     private bool gameStarted = false;
 
@@ -56,9 +59,10 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!gameStarted) return;
 
-        if(context.phase == InputActionPhase.Started)
+        if(context.phase == InputActionPhase.Started && nextAttackTime <= 0)
         {
             animator.SetTrigger(punchTrigger);
+            nextAttackTime = attackTime;
         }
     }
 
@@ -66,9 +70,10 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!gameStarted) return;
 
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && nextAttackTime <= 0)
         {
             animator.SetTrigger(kickTrigger);
+            nextAttackTime = attackTime;
         }
     }
 
@@ -77,5 +82,13 @@ public class PlayerCombat : MonoBehaviour
         if (!gameStarted) return;
 
         animator.SetTrigger("hit");
+    }
+
+    private void Update()
+    {
+        if(nextAttackTime > 0)
+        {
+            nextAttackTime -= Time.deltaTime;
+        }
     }
 }
