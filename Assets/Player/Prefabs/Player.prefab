@@ -229,6 +229,7 @@ MonoBehaviour:
   Speed: 3
   SpeedMultiplier: 0.1
   moveAction: {fileID: -5075026953097348231, guid: 87380db5fbc895247af5eed05ac673e1, type: 3}
+  gameStarted: 0
 --- !u!114 &6229102792250164210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +246,8 @@ MonoBehaviour:
   punchAction: {fileID: -390809288058124180, guid: 87380db5fbc895247af5eed05ac673e1, type: 3}
   kickTrigger: kick
   kickAction: {fileID: -4594168553734046191, guid: 87380db5fbc895247af5eed05ac673e1, type: 3}
+  attackTime: 1
+  gameStarted: 0
 --- !u!114 &6229102792250164204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6669c9ec358db4049b00f73ab06f1ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
+  healthbar: {fileID: 0}
 --- !u!114 &3572102756147244904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +293,7 @@ MonoBehaviour:
   - {fileID: 6229102794023749729}
   - {fileID: 6229102793325652078}
   gfx: {fileID: 6229102793167507544}
-  getValueFromController: 0
+  getValueFromController: 1
 --- !u!114 &7630523348707856224
 MonoBehaviour:
   m_ObjectHideFlags: 0

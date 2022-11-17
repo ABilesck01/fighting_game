@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class GameHUD : MonoBehaviour
 {
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject firstSelected;
     [SerializeField] private TextMeshProUGUI txtEnd;
 
     private void OnEnable()
@@ -40,6 +40,7 @@ public class GameHUD : MonoBehaviour
     {
         startPanel.SetActive(false);
     }
+
     private void PlayerHealth_onDie(object sender, PlayerHealth.onDieEnventArgs e)
     {
         if (e.player == 1)
@@ -48,5 +49,16 @@ public class GameHUD : MonoBehaviour
             txtEnd.text = "Player 1 wins!";
         
         endPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(firstSelected);
+    }
+
+    public void Rematch()
+    {
+        Loading.LoadScene("VersusMode");
+    }
+
+    public void BackToMenu()
+    {
+        Loading.LoadScene("MainMenu");
     }
 }

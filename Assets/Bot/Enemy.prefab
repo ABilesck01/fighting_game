@@ -354,6 +354,7 @@ MonoBehaviour:
   gfx: {fileID: 8412859408110995313}
   getValueFromController: 1
   isDead: 0
+  canMove: 1
 --- !u!1 &8412859408110995319
 GameObject:
   m_ObjectHideFlags: 0
