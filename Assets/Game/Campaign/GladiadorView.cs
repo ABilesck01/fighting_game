@@ -9,7 +9,7 @@ public class GladiadorView : MonoBehaviour
 {
     [SerializeField] private Image preview;
     [SerializeField] private TextMeshProUGUI txtName;
-    [SerializeField] private Button btnSelect;
+    public Button btnSelect;
 
     public void Fill(GladiatorData data, UnityAction btnSelectAction)
     {

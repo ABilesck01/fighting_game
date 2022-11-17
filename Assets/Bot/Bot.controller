@@ -19,7 +19,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 2
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -321,7 +321,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 2
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -339,10 +339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520c6bf6a252e85429d1151f625b5e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDistance: 4
+  AttackDistance: 4.6
   speed: 0
-  MinAttackSpeed: 3
-  MaxAttackSpeed: 5
+  MinAttackSpeed: 1
+  MaxAttackSpeed: 3
 --- !u!1107 &8351709007508213490
 AnimatorStateMachine:
   serializedVersion: 6

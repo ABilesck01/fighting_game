@@ -13,13 +13,15 @@ public class Bot_Movement : StateMachineBehaviour
     [SerializeField] private float MaxAttackSpeed;
     
     private float nextTimeToAttack;
+    private BotController controller;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponentInParent<Rigidbody2D>();
-        speed = animator.GetComponentInParent<BotStats>().Speed;
+        controller = animator.GetComponentInParent<BotController>();
+        speed = controller.Speed;//animator.GetComponentInParent<BotController>().Speed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -52,7 +54,10 @@ public class Bot_Movement : StateMachineBehaviour
         }
         else
         {
-            rb.MovePosition(newPos);
+            if(controller.canMove)
+            { 
+                rb.MovePosition(newPos);
+            }
         }
 
     }
@@ -62,7 +67,7 @@ public class Bot_Movement : StateMachineBehaviour
     {
         animator.ResetTrigger("punch");
         animator.ResetTrigger("kick");
-        nextTimeToAttack = Random.Range(MinAttackSpeed, MaxAttackSpeed);
+        //nextTimeToAttack = Random.Range(MinAttackSpeed, MaxAttackSpeed);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

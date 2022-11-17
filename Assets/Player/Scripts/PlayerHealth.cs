@@ -10,18 +10,24 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
     [SerializeField] private Healthbar healthbar;
 
+    private PlayerCombat playerCombat;
+
     public event EventHandler onTakeDamage;
     public class onDieEnventArgs : EventArgs
     {
         public int player;
     }
     public static event EventHandler<onDieEnventArgs> onDie;
-
+    private Rigidbody2D rb;
     private PlayerData playerData;
+    private PlayerMovement playerMovement;
 
     private void Awake()
     {
         playerData = GetComponent<PlayerData>();
+        rb = GetComponent<Rigidbody2D>();
+        playerCombat = GetComponent<PlayerCombat>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Start()
@@ -46,11 +52,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
+        StopAllCoroutines();
 
+        currentHealth -= amount;
         healthbar?.SetValue(currentHealth);
         onTakeDamage?.Invoke(this, EventArgs.Empty);
-
+        StartCoroutine(PauseCombo());
         if (currentHealth <= 0)
         {
             onDie?.Invoke(this, new onDieEnventArgs
@@ -58,6 +65,16 @@ public class PlayerHealth : MonoBehaviour
                 player = playerData.PlayerCode
             });
         }
+    }
+
+    private IEnumerator PauseCombo()
+    {
+        //playerCombat.gameStarted = false;
+        playerMovement.gameStarted = false;
+        rb.AddForce(-transform.right * 1.3f, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.25f);
+        //playerCombat.gameStarted = true;
+        playerMovement.gameStarted = true;
     }
 
 }

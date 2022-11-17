@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FightController : MonoBehaviour
 {
+    [SerializeField] private GameObject mainFirstSelected;
+    [Space]
     [SerializeField] private GameObject myGladiator;
+    [SerializeField] private GameObject Enemies;
     [SerializeField] private GladiadorView viewPrefab;
     [SerializeField] private Transform viewContainer;
     [Space]
@@ -13,7 +17,6 @@ public class FightController : MonoBehaviour
 
     private void OnEnable()
     {
-        FillGladiators();
         FillEnemies();
     }
 
@@ -24,7 +27,7 @@ public class FightController : MonoBehaviour
                 $"Fight(20)", () =>
                 {
                     CampaignController.Instance.SetEnemyToFight(easy, Dificulty.easy);
-                    myGladiator.SetActive(true);
+                    OnChoseEnemy();
                 });
 
         GladiatorData medium = CampaignController.Instance.getGladiator(Dificulty.medium);
@@ -32,7 +35,7 @@ public class FightController : MonoBehaviour
             medium.Name, $"Fight(40)", () =>
                 {
                     CampaignController.Instance.SetEnemyToFight(medium, Dificulty.medium);
-                    myGladiator.SetActive(true);
+                    OnChoseEnemy();
                 });
 
         GladiatorData Hard = CampaignController.Instance.getGladiator(Dificulty.hard);
@@ -40,8 +43,15 @@ public class FightController : MonoBehaviour
             Hard.Name, $"Fight(60)", () =>
             {
                 CampaignController.Instance.SetEnemyToFight(Hard, Dificulty.hard);
-                myGladiator.SetActive(true);
+                OnChoseEnemy();
             });
+    }
+
+    private void OnChoseEnemy()
+    {
+        myGladiator.SetActive(true);
+        Enemies.SetActive(false);
+        FillGladiators();
     }
 
     private void FillGladiators()
@@ -51,6 +61,8 @@ public class FightController : MonoBehaviour
             if(!item.name.Contains("template"))
                 Destroy(item.gameObject);
         }
+
+        bool hasSelectedButton = false;
 
         foreach (GladiatorData item in CampaignController.Instance.Gladiators)
         {
@@ -62,12 +74,21 @@ public class FightController : MonoBehaviour
             });
             view.gameObject.name = $"gladiator_{item.Name}";
             view.gameObject.SetActive(true);
+            if(!hasSelectedButton)
+            {
+                Debug.Log("Chega aqui", view.btnSelect.gameObject);
+                EventSystem.current.SetSelectedGameObject(view.btnSelect.gameObject);
+                hasSelectedButton = true;
+            }
         }
     }
 
     public void CloseFight()
     {
+        myGladiator.SetActive(false);
         gameObject.SetActive(false);
+        Enemies.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(mainFirstSelected);
     }
 
 }

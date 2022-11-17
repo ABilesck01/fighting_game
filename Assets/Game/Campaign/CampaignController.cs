@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class CampaignController : MonoBehaviour
@@ -39,6 +40,24 @@ public class CampaignController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
+    }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        OnSpendMoney?.Invoke(this, new onSpendMoney
+        {
+            newMoney = Money
+        });
     }
 
     private void Start()
@@ -127,6 +146,34 @@ public class CampaignController : MonoBehaviour
         data.color = Colors[Random.Range(0, Colors.Count)];
 
         return data;
+    }
+
+
+
+    public void PlayerLostMatch()
+    {
+        gladiators.Remove(gladiatorToFight);
+
+        if(Money <= 30 && gladiators.Count == 0)
+        {
+            Debug.Log("Bankrupt");
+        }
+    }
+
+    public void PlayerWonMatch()
+    {
+        switch (currentDificulty)
+        {
+            case Dificulty.easy:
+                Money += 40;
+                break;
+            case Dificulty.medium:
+                Money += 80;
+                break;
+            case Dificulty.hard:
+                Money += 120;
+                break;
+        }
     }
 }
 

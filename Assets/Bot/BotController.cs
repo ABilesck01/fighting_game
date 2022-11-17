@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BotStats : MonoBehaviour
+public class BotController : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
 
@@ -15,14 +15,20 @@ public class BotStats : MonoBehaviour
 
     private GladiatorData data;
     [SerializeField] private bool getValueFromController;
+    private Rigidbody2D rb;
 
     private Animator animator;
 
     public bool isDead = false;
+    public bool canMove = true;
+    private bool invulnerable = false;
+
+    public static event EventHandler onDie;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -66,16 +72,36 @@ public class BotStats : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        if (isDead) return;
+        if (isDead || invulnerable) return;
+
+        StopAllCoroutines();
+
+        animator.ResetTrigger("punch");
+        animator.ResetTrigger("kick");
 
         currentHealth -= amount;
         healthbar.SetValue(currentHealth);
+        StartCoroutine(DisableMove());
         animator.SetTrigger("hit");
         if(currentHealth <= 0)
         {
             isDead = true;
             animator.SetBool("isDead", true);
+            onDie?.Invoke(this, EventArgs.Empty);   
         }
+    }
 
+    private IEnumerator DisableMove()
+    {
+        invulnerable = true;
+        canMove = false;
+        rb.AddForce(-transform.right, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(.5f);
+        canMove = true;
+
+        invulnerable = false;
+
+        if(isDead)
+            rb.velocity = Vector3.zero;
     }
 }

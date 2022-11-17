@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool canMove = false;
-    private bool gameStarted = false;
+    public bool gameStarted = false;
 
 
     private void Awake()
@@ -61,7 +61,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
+        if(gameStarted)
+            rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
     }
 
     public void SetSpeed(int value)

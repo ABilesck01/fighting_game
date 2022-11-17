@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -11,8 +9,10 @@ public class CampaignMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtMoney;
     [Space]
     [SerializeField] private GameObject FightMenu;
+    [SerializeField] private GameObject FightFirstSelected;
     [Space]
     [SerializeField] private GameObject StoreMenu;
+    [SerializeField] private GameObject StoreFirstSelected;
     [SerializeField] private StoreController storeController;
     [Space]
     [SerializeField] private Button btnFight;
@@ -46,12 +46,14 @@ public class CampaignMenu : MonoBehaviour
     private void OnFight()
     {
         FightMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(FightFirstSelected);
     }
 
     private void OnStore()
     {
         storeController.OnOpenStore();
         StoreMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(StoreFirstSelected);
     }
 
     private void OnQuit()

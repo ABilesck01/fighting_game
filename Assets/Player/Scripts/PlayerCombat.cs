@@ -16,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
 
     private float nextAttackTime;
     private Animator animator;
-    private bool gameStarted = false;
+    public bool gameStarted = false;
 
     private void Awake()
     {

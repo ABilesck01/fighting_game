@@ -22,7 +22,7 @@ public class HitBox : MonoBehaviour
                 {
                     health.TakeDamage(Damage);
                 }
-                else if (collision.TryGetComponent(out BotStats bot))
+                else if (collision.TryGetComponent(out BotController bot))
                 {
                     bot.TakeDamage(Damage);
                 }

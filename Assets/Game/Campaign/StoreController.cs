@@ -1,9 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StoreController : MonoBehaviour
 {
+    [SerializeField] private GameObject mainFirstSelected;
+    [Space]
     [SerializeField] private GameObject storePanel;
     [SerializeField] private int BaseValue;
     [SerializeField] private int incrementValue;
@@ -55,5 +57,6 @@ public class StoreController : MonoBehaviour
     public void CloseStore()
     {
         storePanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(mainFirstSelected);
     }
 }
