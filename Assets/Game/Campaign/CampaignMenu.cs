@@ -6,7 +6,7 @@ using TMPro;
 
 public class CampaignMenu : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI txtMoney;
+    [SerializeField] private TextMeshProUGUI[] txtMoney;
     [Space]
     [SerializeField] private GameObject FightMenu;
     [SerializeField] private GameObject FightFirstSelected;
@@ -41,12 +41,22 @@ public class CampaignMenu : MonoBehaviour
     private void CampaignController_OnSpendMoney(object sender, 
         CampaignController.onSpendMoney e)
     {
-        txtMoney.text = e.newMoney.ToString();
+        for (int i = 0; i < txtMoney.Length; i++)
+        {
+            txtMoney[i].text = e.newMoney.ToString();
+        }
     }
     private void OnFight()
     {
-        FightMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(FightFirstSelected);
+        if(CampaignController.Instance.GetGladiatorsCount() > 0)
+        {
+            FightMenu.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(FightFirstSelected);
+        }
+        else
+        {
+            InfoController.current.ShowInfo("You dont have any gladiators! Go to store to buy one.");
+        }
     }
 
     private void OnStore()

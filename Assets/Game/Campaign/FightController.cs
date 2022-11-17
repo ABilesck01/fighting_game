@@ -71,12 +71,12 @@ public class FightController : MonoBehaviour
             {
                 CampaignController.Instance.SetGladiatorToFIght(item);
                 Loading.LoadScene("StoryFight");
+                CloseFight();
             });
             view.gameObject.name = $"gladiator_{item.Name}";
             view.gameObject.SetActive(true);
             if(!hasSelectedButton)
             {
-                Debug.Log("Chega aqui", view.btnSelect.gameObject);
                 EventSystem.current.SetSelectedGameObject(view.btnSelect.gameObject);
                 hasSelectedButton = true;
             }

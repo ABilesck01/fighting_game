@@ -50,6 +50,10 @@ public class StoreController : MonoBehaviour
             CampaignController.Instance.AddGladiator(data);
             CheckTotalValue();
         }
+        else
+        {
+            InfoController.current.ShowInfo("Not enough money!");
+        }
 
         CloseStore();
     }

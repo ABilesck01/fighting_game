@@ -269,7 +269,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: f12bf4e3edd116141a6f5bf10283fe6a, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
@@ -689,7 +696,7 @@ PlayerSettings:
   metroCertificateNotAfter: 809f679a3e19da01
   metroApplicationDescription: 2D_BuiltInRenderer
   wsaImages: {}
-  metroTileShortName: Gladiator
+  metroTileShortName: Gladius
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

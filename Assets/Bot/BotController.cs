@@ -81,7 +81,6 @@ public class BotController : MonoBehaviour
 
         currentHealth -= amount;
         healthbar.SetValue(currentHealth);
-        StartCoroutine(DisableMove());
         animator.SetTrigger("hit");
         if(currentHealth <= 0)
         {
@@ -89,19 +88,5 @@ public class BotController : MonoBehaviour
             animator.SetBool("isDead", true);
             onDie?.Invoke(this, EventArgs.Empty);   
         }
-    }
-
-    private IEnumerator DisableMove()
-    {
-        invulnerable = true;
-        canMove = false;
-        rb.AddForce(-transform.right, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(.5f);
-        canMove = true;
-
-        invulnerable = false;
-
-        if(isDead)
-            rb.velocity = Vector3.zero;
     }
 }
