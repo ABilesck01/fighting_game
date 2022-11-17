@@ -26,7 +26,14 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.onGameStart += GameManager_onGameStart;
+        if(CampaignController.Instance != null)
+        {
+            CampaignFightManager.onGameStart += GameManager_onGameStart;
+        }
+        else
+        {
+            GameManager.onGameStart += GameManager_onGameStart;
+        }
         PlayerHealth.onDie += PlayerHealth_onDie;
         GetComponent<PlayerHealth>().onTakeDamage += PlayerCombat_onTakeDamage;
     }
@@ -34,12 +41,20 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.onGameStart -= GameManager_onGameStart;
+        if (CampaignController.Instance != null)
+        {
+            CampaignFightManager.onGameStart -= GameManager_onGameStart;
+        }
+        else
+        {
+            GameManager.onGameStart -= GameManager_onGameStart;
+        }
         PlayerHealth.onDie -= PlayerHealth_onDie;
         GetComponent<PlayerHealth>().onTakeDamage -= PlayerCombat_onTakeDamage;
     }
     private void PlayerHealth_onDie(object sender, PlayerHealth.onDieEnventArgs e)
     {
+        animator.SetBool("isDead", true);
         gameStarted = false;
     }
 

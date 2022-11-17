@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6229102792250164210}
   - component: {fileID: 6229102792250164204}
   - component: {fileID: 3572102756147244904}
-  - component: {fileID: 8647192773676219400}
+  - component: {fileID: 7336090692484630569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
+  SpeedMultiplier: 0
   moveAction: {fileID: -5075026953097348231, guid: 87380db5fbc895247af5eed05ac673e1, type: 3}
 --- !u!114 &6229102792250164210
 MonoBehaviour:
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6229102793167507544}
---- !u!114 &8647192773676219400
+--- !u!114 &7336090692484630569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,9 +279,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6229102792250164212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac2de0d48f8e2e4eaf9ebf9ecd2f1cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 381f5644aa0913f42bec3a7dcf284384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 6229102792250164213}
+  playerHealth: {fileID: 6229102792250164204}
+  hitBoxes:
+  - {fileID: 6229102794023749729}
+  - {fileID: 6229102793325652078}
 --- !u!1 &6229102793167507550
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
+  DamageMultiplier: 0.1
 --- !u!1 &6229102794023749733
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,3 +659,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
+  DamageMultiplier: 0.1

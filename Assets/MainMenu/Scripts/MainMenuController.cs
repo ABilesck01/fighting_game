@@ -30,8 +30,8 @@ public class MainMenuController : MonoBehaviour
     {
         if(CampaignController.Instance != null)
         {
-            CampaignController.Instance = null;
             Destroy(CampaignController.Instance.gameObject);
+            CampaignController.Instance = null;
         }
     }
 

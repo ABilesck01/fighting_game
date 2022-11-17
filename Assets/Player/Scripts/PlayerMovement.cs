@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float Speed;
+    [SerializeField] private float SpeedMultiplier;
     [SerializeField] private InputActionReference moveAction;
 
     private float horizontal = 0;
@@ -22,13 +23,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.onGameStart += GameManager_onGameStart;
+        if (CampaignController.Instance != null)
+        {
+            CampaignFightManager.onGameStart += GameManager_onGameStart;
+        }
+        else
+        {
+            GameManager.onGameStart += GameManager_onGameStart;
+        }
         PlayerHealth.onDie += PlayerHealth_onDie;
     }
 
     private void OnDisable()
     {
-        GameManager.onGameStart -= GameManager_onGameStart;
+        if (CampaignController.Instance != null)
+        {
+            CampaignFightManager.onGameStart -= GameManager_onGameStart;
+        }
+        else
+        {
+            GameManager.onGameStart -= GameManager_onGameStart;
+        }
         PlayerHealth.onDie -= PlayerHealth_onDie;
     }
 
@@ -53,6 +68,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
+    }
+
+    public void SetSpeed(int value)
+    {
+        Speed += value * SpeedMultiplier;
     }
 
     public void EnableMove() => canMove = true;

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
+    [SerializeField] private float maxHealth;
     
-    private int currentHealth;
+    private float currentHealth;
     private Healthbar healthbar;
 
     public event EventHandler onTakeDamage;
@@ -21,8 +21,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
         playerData = GetComponent<PlayerData>();
+    }
+
+    public void SetMaxHealth(int value)
+    {
+        maxHealth += value;
+        currentHealth = maxHealth;
     }
 
     public void AsignHealthBar(Healthbar healthbar)
@@ -31,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         this.healthbar.Initialize(maxHealth);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
 

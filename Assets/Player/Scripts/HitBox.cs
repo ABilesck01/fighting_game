@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    [SerializeField] private int Damage;
+    [SerializeField] private float Damage;
+    [SerializeField] private float DamageMultiplier = 0.1f;
+
+    public void SetDamage(int value)
+    {
+        Damage += value * DamageMultiplier;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

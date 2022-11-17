@@ -212,6 +212,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: gladiador_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34e6c1001c33204685a3577539f264c
+      internalID: -1768561950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -226,6 +247,7 @@ TextureImporter:
       gladiador_2: 120601912
       gladiador_1: 380887106
       gladiador_0: -58213006
+      gladiador_4: -1768561950
       gladiador_3: -2039620572
   spritePackingTag: 
   pSDRemoveMatte: 0

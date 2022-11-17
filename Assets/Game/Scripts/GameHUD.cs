@@ -11,14 +11,28 @@ public class GameHUD : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.onGameStart += GameManager_onGameStart;
+        if (CampaignController.Instance != null)
+        {
+            CampaignFightManager.onGameStart += GameManager_onGameStart;
+        }
+        else
+        {
+            GameManager.onGameStart += GameManager_onGameStart;
+        }
         PlayerHealth.onDie += PlayerHealth_onDie;
     }
 
 
     private void OnDisable()
     {
-        GameManager.onGameStart -= GameManager_onGameStart;
+        if (CampaignController.Instance != null)
+        {
+            CampaignFightManager.onGameStart -= GameManager_onGameStart;
+        }
+        else
+        {
+            GameManager.onGameStart -= GameManager_onGameStart;
+        }
         PlayerHealth.onDie -= PlayerHealth_onDie;
     }
 
