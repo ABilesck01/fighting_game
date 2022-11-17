@@ -21,29 +21,23 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         if (CampaignController.Instance != null)
         {
-            CampaignFightManager.onGameStart += GameManager_onGameStart;
+            gameStarted = true;
         }
-        else
-        {
-            GameManager.onGameStart += GameManager_onGameStart;
-        }
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onGameStart += GameManager_onGameStart;
         PlayerHealth.onDie += PlayerHealth_onDie;
     }
 
     private void OnDisable()
     {
-        if (CampaignController.Instance != null)
-        {
-            CampaignFightManager.onGameStart -= GameManager_onGameStart;
-        }
-        else
-        {
-            GameManager.onGameStart -= GameManager_onGameStart;
-        }
+        GameManager.onGameStart -= GameManager_onGameStart;
         PlayerHealth.onDie -= PlayerHealth_onDie;
     }
 

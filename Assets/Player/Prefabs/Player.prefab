@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6229102792250164204}
   - component: {fileID: 3572102756147244904}
   - component: {fileID: 7336090692484630569}
+  - component: {fileID: 7630523348707856224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  SpeedMultiplier: 0
+  SpeedMultiplier: 0.1
   moveAction: {fileID: -5075026953097348231, guid: 87380db5fbc895247af5eed05ac673e1, type: 3}
 --- !u!114 &6229102792250164210
 MonoBehaviour:
@@ -287,6 +288,20 @@ MonoBehaviour:
   hitBoxes:
   - {fileID: 6229102794023749729}
   - {fileID: 6229102793325652078}
+  gfx: {fileID: 6229102793167507544}
+  getValueFromController: 0
+--- !u!114 &7630523348707856224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229102792250164212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac2de0d48f8e2e4eaf9ebf9ecd2f1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6229102793167507550
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class CampaignFightManager : MonoBehaviour
 {
     public static event EventHandler onGameStart;
 
+    public bool instantPlay;
+
     private void Start()
     {
         StartCoroutine(countDown());
@@ -15,12 +17,21 @@ public class CampaignFightManager : MonoBehaviour
     private IEnumerator countDown()
     {
         WaitForSeconds one = new WaitForSeconds(1);
-        for (int i = 3; i > 0; i--)
+        WaitForSeconds instant = new WaitForSeconds(.1f);
+        if(instantPlay)
         {
-            Debug.Log(i);
-            yield return one;
+            yield return instantPlay;
+            onGameStart?.Invoke(this, EventArgs.Empty);
         }
-        Debug.Log("Fight");
-        onGameStart?.Invoke(this, EventArgs.Empty);
+        else
+        {
+            for (int i = 3; i > 0; i--)
+            {
+                Debug.Log(i);
+                yield return one;
+            }
+            Debug.Log("Fight");
+            onGameStart?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

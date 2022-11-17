@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private HitBox[] hitBoxes;
+    [SerializeField] private SpriteRenderer gfx;
 
     private GladiatorData data;
     [SerializeField] private bool getValueFromController;
@@ -25,7 +26,7 @@ public class PlayerStats : MonoBehaviour
                 Force = 10,
                 Agility = 10,
                 Name = "Brutus",
-                color = Color.white,
+                color = Color.blue,
             };
         }
 
@@ -36,6 +37,7 @@ public class PlayerStats : MonoBehaviour
             hitBoxes[i].SetDamage(data.Force);
         }
 
+        gfx.color = data.color;
 
     }
 }

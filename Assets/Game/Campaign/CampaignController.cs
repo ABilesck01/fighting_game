@@ -80,6 +80,11 @@ public class CampaignController : MonoBehaviour
         return gladiatorToFight;
     }
 
+    public GladiatorData getEnemyGladiator()
+    {
+        return enemyGladiatorToFight;
+    }
+
     public void SetEnemyToFight(GladiatorData gladiator, Dificulty dif)
     {
         enemyGladiatorToFight = gladiator;
