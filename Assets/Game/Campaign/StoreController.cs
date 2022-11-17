@@ -4,29 +4,56 @@ using UnityEngine;
 
 public class StoreController : MonoBehaviour
 {
+    [SerializeField] private GameObject storePanel;
     [SerializeField] private int BaseValue;
     [SerializeField] private int incrementValue;
+    [SerializeField] private List<GladiatorCard> Cards = new List<GladiatorCard>();
     private int totalValue;
 
     private GladiatorData selectedGladiator;
 
+    public static StoreController Instance;
+
     private void Awake()
     {
+        Instance = this;
+
         CheckTotalValue();
     }
 
-    private void CheckTotalValue()
+    public void CheckTotalValue()
     {
-        totalValue = BaseValue * incrementValue *
+        totalValue = BaseValue + incrementValue *
                     CampaignController.Instance.GetGladiatorsCount();
     }
 
-    public void BuyGladiator()
+    public void OnOpenStore()
     {
-        if(CampaignController.Instance.SpendMoney(totalValue))
+        for (int i = 0; i < 3; i++)
         {
-            CampaignController.Instance.AddGladiator(selectedGladiator);
+            GladiatorData g = CampaignController.Instance.getGladiator(Dificulty.easy);
+            Cards[i].Fill(g.Vitality, g.Force, g.Agility, g.color, g.Name,
+                $"Buy({totalValue}",() =>
+                {
+                    BuyGladiator(g);
+                }
+                );
+        }
+    }
+
+    public void BuyGladiator(GladiatorData data)
+    {
+        if (CampaignController.Instance.SpendMoney(totalValue))
+        {
+            CampaignController.Instance.AddGladiator(data);
             CheckTotalValue();
         }
+
+        CloseStore();
+    }
+
+    public void CloseStore()
+    {
+        storePanel.SetActive(false);
     }
 }

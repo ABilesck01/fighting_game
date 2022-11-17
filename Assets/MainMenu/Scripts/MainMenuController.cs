@@ -26,6 +26,15 @@ public class MainMenuController : MonoBehaviour
         btnQuit.onClick.AddListener(OnQuitClick);
     }
 
+    private void Start()
+    {
+        if(CampaignController.Instance != null)
+        {
+            CampaignController.Instance = null;
+            Destroy(CampaignController.Instance.gameObject);
+        }
+    }
+
     private void OnQuitClick()
     {
         Application.Quit();

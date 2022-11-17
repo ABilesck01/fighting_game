@@ -60,7 +60,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6229102792250164215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -200,6 +200,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a18dfb37-cd77-4b3d-ad97-d0437912dbd8
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ecfab483-63e5-4749-9233-6b863baccdff
+    m_ActionName: Fight/Start[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20cea01a-19b0-4d23-b1be-3106ec0a39c7
+    m_ActionName: Fight/Select[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Fight

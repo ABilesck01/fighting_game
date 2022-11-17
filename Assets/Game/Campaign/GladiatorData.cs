@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class GladiatorData
 {
-    public string Name;
-    public int Vitality;
-    public int Force;
-    public int Agility;
-    public Color color;
+    public string Name = "Brutus";
+    public int Vitality = 1;
+    public int Force = 1;
+    public int Agility = 1;
+    public Color color = Color.white;
 }
